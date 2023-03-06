@@ -567,7 +567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!154 &838432113
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -604,7 +604,7 @@ Terrain:
   m_DrawTreesAndFoliage: 1
   m_StaticShadowCaster: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 586f3fc031e4b4b8f834e7afa7a05653, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: 5cbf6203b0bf542efad85d6de5d564c7, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
@@ -1055,7 +1055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &2137910711
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1129,7 +1129,7 @@ Transform:
   m_GameObject: {fileID: 2137910710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 43.284615, y: 43.284615, z: 43.284615}
+  m_LocalScale: {x: 36.899014, y: 36.899014, z: 36.899014}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

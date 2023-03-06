@@ -8,8 +8,7 @@ public class PixelizeFeature : ScriptableRendererFeature
     public class CustomPassSettings
     {
         public RenderPassEvent renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
-        public int screenHeight = 144;
-        public int pixelSize = 3;
+        public int pixelSize = 4;
     }
 
     [SerializeField] private CustomPassSettings settings;
@@ -38,9 +37,6 @@ public class PixelizeFeature : ScriptableRendererFeature
             colorBuffer = renderingData.cameraData.renderer.cameraColorTarget;
             RenderTextureDescriptor descriptor = renderingData.cameraData.cameraTargetDescriptor;
 
-            int w = renderingData.cameraData.camera.pixelWidth;
-            //pixelScreenHeight = settings.screenHeight;
-            //pixelScreenWidth = (int)(pixelScreenHeight * renderingData.cameraData.camera.aspect + 0.5f);
             pixelScreenHeight = (int)(renderingData.cameraData.camera.pixelHeight / settings.pixelSize + 0.5f);
             pixelScreenWidth = (int)(renderingData.cameraData.camera.pixelWidth / settings.pixelSize + 0.5f);
 
@@ -81,12 +77,6 @@ public class PixelizeFeature : ScriptableRendererFeature
     public override void Create()
     {
         m_ScriptablePass = new PixelizePass(settings);
-        //{
-        //    // Configures where the render pass should be injected.
-        //    //renderPassEvent = RenderPassEvent.AfterRenderingOpaques
-        //    //RenderPassEvent.
-        //    //renderPassEvent = settings.renderPassEvent;
-        //};
     }
 
     // Here you can inject one or multiple render passes in the renderer.
