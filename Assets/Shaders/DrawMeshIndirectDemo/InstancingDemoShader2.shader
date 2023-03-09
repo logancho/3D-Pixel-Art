@@ -1,24 +1,33 @@
-Shader "Custom/InstancedIndirectColor" {
-    SubShader {
-        Tags { "RenderType" = "Opaque" }
+Shader "Custom/InstancingDemoShader2"
+{
+    Properties
+    {
+    }
+    SubShader
+    {
+        Tags { "RenderType"="Opaque" }
+        LOD 100
 
-        Pass {
+        Pass
+        {
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
 
             #include "UnityCG.cginc"
 
-            struct appdata_t {
-                float4 vertex   : POSITION;
-                float4 color    : COLOR;
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
             };
 
-            struct v2f {
+            struct v2f
+            {
                 float4 vertex   : SV_POSITION;
                 fixed4 color    : COLOR;
-            }; 
-
+            };
+                        
             struct MeshProperties {
                 float4x4 mat;
                 float4 color;
@@ -26,7 +35,8 @@ Shader "Custom/InstancedIndirectColor" {
 
             StructuredBuffer<MeshProperties> _Properties;
 
-            v2f vert(appdata_t i, uint instanceID: SV_InstanceID) {
+            v2f vert (appdata i, uint instanceID: SV_InstanceID)
+            {
                 v2f o;
 
                 //Move from world space, to object space, by calculating pos
@@ -39,10 +49,10 @@ Shader "Custom/InstancedIndirectColor" {
                 return o;
             }
 
-            fixed4 frag(v2f i) : SV_Target {
+            fixed4 frag (v2f i) : SV_Target
+            {
                 return i.color;
             }
-
             ENDCG
         }
     }

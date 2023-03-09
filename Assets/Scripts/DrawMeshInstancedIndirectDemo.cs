@@ -52,7 +52,7 @@ public class DrawMeshInstancedIndirectDemo : MonoBehaviour
         // Argument buffer used by DrawMeshInstancedIndirect.
         uint[] args = new uint[5] { 0, 0, 0, 0, 0 };
         // Arguments for drawing mesh.
-        // 0 == number of triangle indices, 1 == population, others are only relevant if drawing submeshes.
+        // 0 == number of triangle indices of instanced mesh, 1 == population, others are only relevant if drawing submeshes.
         args[0] = (uint)mesh.GetIndexCount(0);
         args[1] = (uint)population;
         args[2] = (uint)mesh.GetIndexStart(0);

@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80282420345074a3d99d8e6940a1ab78, type: 3}
   m_Name: PixelizeFeature
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
     renderPassEvent: 550
-    pixelSize: 8
+    pixelSize: 4
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
