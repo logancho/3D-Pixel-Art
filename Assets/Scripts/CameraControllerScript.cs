@@ -38,14 +38,14 @@ public class CameraControllerScript : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") < -0 && timer > waitTime)
         {
             transform.position += right * -UnitPerPixelHorizontal;
-            Debug.Log(right * -UnitPerPixelHorizontal);
+            //Debug.Log(right * -UnitPerPixelHorizontal);
             //transform.position += new Vector3(-UnitPerPixelHorizontal, 0, 0);
             timer = 0;
         }
         if (Input.GetAxisRaw("Horizontal") > 0 && timer > waitTime)
         {
             transform.position += right * UnitPerPixelHorizontal;
-            Debug.Log(right * UnitPerPixelHorizontal);
+            //Debug.Log(right * UnitPerPixelHorizontal);
             //transform.position += new Vector3(UnitPerPixelHorizontal, 0, 0);
             timer = 0;
         }
@@ -68,7 +68,7 @@ public class CameraControllerScript : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + rotationUnit, transform.eulerAngles.z);
             right = Vector3.Normalize(Quaternion.Euler(0, rotationUnit, 0) * right);
-            Debug.Log(right);
+            //Debug.Log(right);
             forward = Vector3.Normalize(Quaternion.Euler(0, rotationUnit, 0) * forward);
             timer = 0;
         }
@@ -76,7 +76,7 @@ public class CameraControllerScript : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - rotationUnit, transform.eulerAngles.z);
             right = Vector3.Normalize(Quaternion.Euler(0, -rotationUnit, 0) * right);
-            Debug.Log(right);
+            //Debug.Log(right);
             forward = Vector3.Normalize(Quaternion.Euler(0, -rotationUnit, 0) * forward);
             timer = 0;
         }

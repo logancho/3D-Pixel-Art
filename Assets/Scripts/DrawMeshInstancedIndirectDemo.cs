@@ -10,8 +10,8 @@ public class DrawMeshInstancedIndirectDemo : MonoBehaviour
     public float range;
 
     public Material material;
-    //public ComputeShader compute;
-    //public Transform pusher;
+    public ComputeShader compute;
+    public Transform pusher;
 
     private ComputeBuffer meshPropertiesBuffer;
     private ComputeBuffer argsBuffer;
@@ -47,7 +47,7 @@ public class DrawMeshInstancedIndirectDemo : MonoBehaviour
 
     private void InitializeBuffers()
     {
-        //int kernel = compute.FindKernel("CSMain");
+        int kernel = compute.FindKernel("CSMain");
 
         // Argument buffer used by DrawMeshInstancedIndirect.
         uint[] args = new uint[5] { 0, 0, 0, 0, 0 };
@@ -77,7 +77,7 @@ public class DrawMeshInstancedIndirectDemo : MonoBehaviour
 
         meshPropertiesBuffer = new ComputeBuffer(population, MeshProperties.Size());
         meshPropertiesBuffer.SetData(properties);
-        //compute.SetBuffer(kernel, "_Properties", meshPropertiesBuffer);
+        compute.SetBuffer(kernel, "_Properties", meshPropertiesBuffer);
         material.SetBuffer("_Properties", meshPropertiesBuffer);
     }
 
@@ -131,12 +131,13 @@ public class DrawMeshInstancedIndirectDemo : MonoBehaviour
 
     private void Update()
     {
-        //int kernel = compute.FindKernel("CSMain");
+        int kernel = compute.FindKernel("CSMain");
 
-        //compute.SetVector("_PusherPosition", pusher.position);
-        //// We used to just be able to use `population` here, but it looks like a Unity update imposed a thread limit (65535) on my device.
-        //// This is probably for the best, but we have to do some more calculation.  Divide population by numthreads.x in the compute shader.
-        //compute.Dispatch(kernel, Mathf.CeilToInt(population / 64f), 1, 1);
+        compute.SetVector("_PusherPosition", pusher.position);
+
+        // We used to just be able to use `population` here, but it looks like a Unity update imposed a thread limit (65535) on my device.
+        // This is probably for the best, but we have to do some more calculation.  Divide population by numthreads.x in the compute shader.
+        compute.Dispatch(kernel, Mathf.CeilToInt(population / 64f), 1, 1);
         Graphics.DrawMeshInstancedIndirect(mesh, 0, material, bounds, argsBuffer);
     }
 
