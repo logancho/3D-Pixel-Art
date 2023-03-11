@@ -9,6 +9,7 @@ public class InstancingDemo2 : MonoBehaviour
     private Mesh sourceMesh;
     public Mesh instancedMesh;
     public Material instancedMaterial;
+    public float instanceScale;
 
     private ComputeBuffer meshPropertiesBuffer;
     private ComputeBuffer argsBuffer;
@@ -66,18 +67,24 @@ public class InstancingDemo2 : MonoBehaviour
         for (int i = 0; i < numSourceTriangles; i++)
         {
             MeshProperties props = new MeshProperties();
-            ////Read triangle number
+            //Read triangle number
             Vector3 triangleVert1 = sourceMesh.vertices[sourceMesh.triangles[i*3]];
             Vector3 triangleVert2 = sourceMesh.vertices[sourceMesh.triangles[i*3 + 1]];
             Vector3 triangleVert3 = sourceMesh.vertices[sourceMesh.triangles[i*3 + 2]];
             Vector3 position = triangleVert1 + triangleVert2 + triangleVert3;
             position /= 3.0f;
-            //Vector3 position = new Vector3(i * 10.0f, 0, 0);
+
+            //Scale
+            position.y += 0.5f * instanceScale;
+
+            //IMPORTANT//
+            //Make sure y-scale is 1 if your source terrain is a flat object!!
             position = sourceTerrain.transform.localToWorldMatrix * position;
 
             Quaternion rotation = Quaternion.identity;
-            Vector3 scale = Vector3.one * 4f;
-
+            //Scale
+            Vector3 scale = new Vector3(instanceScale, instanceScale, instanceScale);
+            
             props.mat = Matrix4x4.TRS(position, rotation, scale);
             props.color = Color.Lerp(Color.red, Color.blue, Random.value);
             properties[i] = props;

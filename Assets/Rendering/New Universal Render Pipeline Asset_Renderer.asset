@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     renderPassEvent: 550
-    pixelSize: 4
+    pixelSize: 6
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
