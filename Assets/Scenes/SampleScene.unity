@@ -448,11 +448,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 19d979b76f2004928a8c1d8362501554, type: 3}
       propertyPath: m_LocalScale.x
-      value: 34.386227
+      value: 62.26723
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 19d979b76f2004928a8c1d8362501554, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 19d979b76f2004928a8c1d8362501554, type: 3}
       propertyPath: m_LocalScale.z
-      value: 34.386227
+      value: 62.26723
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 19d979b76f2004928a8c1d8362501554, type: 3}
       propertyPath: m_LocalPosition.x
@@ -496,7 +500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 19d979b76f2004928a8c1d8362501554, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 19d979b76f2004928a8c1d8362501554, type: 3}
       propertyPath: m_Name
@@ -1071,7 +1075,7 @@ MonoBehaviour:
   sourceTerrain: {fileID: 775142604}
   instancedMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
   instancedMaterial: {fileID: 2100000, guid: a55bd12f2a2bc4f179641a426ca52b4a, type: 2}
-  instanceScale: 5
+  instanceScale: 7
 --- !u!4 &1431565688
 Transform:
   m_ObjectHideFlags: 0

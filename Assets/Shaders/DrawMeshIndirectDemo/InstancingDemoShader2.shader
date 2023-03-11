@@ -6,8 +6,13 @@ Shader "Custom/InstancingDemoShader2"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" "RenderPipeline" = "UniversalPipeline"}
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" "RenderPipeline" = "UniversalPipeline"}
+
         LOD 100
+
+        ZWrite Off
+
+        Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
@@ -44,7 +49,7 @@ Shader "Custom/InstancingDemoShader2"
 
                 //Finding correct object space coordinate of vertex
                 float4 pos = mul(_Properties[instanceID].mat, i.vertex);
-                float3 vpos = mul((float3x3)unity_ObjectToWorld, 5 * i.vertex.xyz);
+                float3 vpos = mul((float3x3)unity_ObjectToWorld, 7 * i.vertex.xyz);
 
 				float4 worldCoord = float4(_Properties[instanceID].mat._m03,
                     _Properties[instanceID].mat._m13,
@@ -64,6 +69,8 @@ Shader "Custom/InstancingDemoShader2"
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
+                col.rgb += 0.1 * fixed3(0, i.uv.x, i.uv.y);
+                col.rgb += 0.2 * i.color;
                 return col;
                 //return i.color;
             }
